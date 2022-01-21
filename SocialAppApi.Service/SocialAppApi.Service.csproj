@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SocialAppApi.Entities\SocialAppApi.Entities.csproj" />
+    <ProjectReference Include="..\SocialAppApi.Repository\SocialAppApi.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

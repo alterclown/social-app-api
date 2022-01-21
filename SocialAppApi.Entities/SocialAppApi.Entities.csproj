@@ -7,7 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\SocialAppApi.Entities\SocialAppApi.Entities.csproj" />
+    <Folder Include="Authentication\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
 
 </Project>
