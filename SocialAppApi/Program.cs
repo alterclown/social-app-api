@@ -1,72 +1,27 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Tokens;
-using SocialAppApi.Database.SocialAppContext;
-using SocialAppApi.Entities.AppSettings;
-using System.Text;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using SocialAppApi;
 
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-
-
-
-
-//var appSettingsSection = Configuration.GetSection("AppSettings");
-//builder.Services.Configure<AppSettings>(appSettingsSection);
-
-//var appSettings = appSettingsSection.Get<AppSettings>();
-//var key = Encoding.ASCII.GetBytes(appSettings.Key);
-
-//builder.Services.AddAuthentication(a => {
-//    a.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-//    a.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-//}).
-//AddJwtBearer(j => {
-//    j.RequireHttpsMetadata = false;
-//    j.SaveToken = true;
-//    j.TokenValidationParameters = new TokenValidationParameters
-//    {
-//        ValidateIssuerSigningKey = true,
-//        IssuerSigningKey = new SymmetricSecurityKey(key),
-//        ValidateIssuer = false,
-//        ValidateAudience = false
-//    };
-
-//});
-
-
-//builder.Services.AddDbContext<SocialAppContext>(options =>
-//{
-//    options.UseSqlServer(Configuration.GetConnectionString("OptocoderHrmContext"));
-//});
-
-
-builder.Services.AddControllers().AddNewtonsoftJson(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
-
-//Register your Services Here
-
-//builder.Services.AddScoped<ICompanyService, CompanyService>();
-//builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+namespace SocialAppApi
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    public class Program
+    {
+        public static void Main(string[] args)
+        {
+            CreateHostBuilder(args).Build().Run();
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args) =>
+            Host.CreateDefaultBuilder(args)
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
+    }
 }
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
-app.Run();
