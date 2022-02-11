@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SocialAppApi.Database\SocialAppApi.Database.csproj" />
     <ProjectReference Include="..\SocialAppApi.Entities\SocialAppApi.Entities.csproj" />
   </ItemGroup>
 

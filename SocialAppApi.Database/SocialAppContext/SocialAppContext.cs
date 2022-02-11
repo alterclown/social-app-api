@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SocialAppApi.Entities.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,15 @@ namespace SocialAppApi.Database.SocialAppContext
         //}
 
         //Add Db set Class Here
-        //public DbSet<User> User { get; set; }
-        
+        public DbSet<User> Users { get; set; }
+        public DbSet<GroupFollower> GroupFollowers { get; set; }
+        public DbSet<GroupMember> GroupMembers { get; set; }
+        public DbSet<GroupPost> GroupPosts { get; set; }
+        public DbSet<UserFollower> UserFollowers { get; set; }
+        public DbSet<UserFriend> UserFriends { get; set; }
+        public DbSet<UserMessage> UserMessages { get; set; }
+
+        public DbSet<UserPost> UserPosts { get; set; }
+
     }
 }
