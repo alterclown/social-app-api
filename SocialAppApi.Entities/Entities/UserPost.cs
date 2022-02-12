@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace SocialAppApi.Entities.Entities
 {
+    [Table("UserPost")]
     public class UserPost
     {
 

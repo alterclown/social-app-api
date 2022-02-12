@@ -108,8 +108,8 @@ namespace SocialAppApi.Repository.Post
                     await _socialAppContext.SaveChangesAsync();
                 }
                 else {
-                    await _socialAppContext.UserPosts.AddAsync(userPost);
-                    await _socialAppContext.SaveChangesAsync();
+                     _socialAppContext.UserPosts.Add(userPost);
+                     _socialAppContext.SaveChanges();
                 }
                 return userPost;
 

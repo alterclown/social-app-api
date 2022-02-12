@@ -12,6 +12,8 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SocialAppApi.Database.SocialAppContext;
 using SocialAppApi.Entities.AppSettings;
+using SocialAppApi.Repository.Post;
+using SocialAppApi.Service.Post;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +38,7 @@ namespace SocialAppApi
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "ReactAngularPracticeApi", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "SocialAppContextApi", Version = "v1" });
             });
 
             var appSettingsSection = Configuration.GetSection("AppSettings");
@@ -69,8 +71,8 @@ namespace SocialAppApi
             //Register  your Service here
 
 
-            //services.AddScoped<IAuthenticationService, AuthenticationService>();
-            //services.AddScoped<IAuthenticationRepository, AuthenticationRepository>();
+            services.AddScoped<IUserPostService, UserPostService>();
+            services.AddScoped<IUserPostRepository, UserPostRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
